@@ -613,7 +613,7 @@
     <nav class="primary-nav">
       <a href="#news">お知らせ</a>
       <a href="schedule.html">年間の大会予定</a>
-      <a href="#results">大会結果</a>
+      <a href="results.html">大会結果</a>
       <a href="teams.html">登録チーム紹介</a>
       <a class="cta" href="#contact">お問い合わせ</a>
     </nav>
@@ -661,7 +661,7 @@
           <div class="ql-card-text"><h3>登録チーム紹介</h3><p>岐阜県に登録するチームをご紹介します。</p></div>
           <span class="ql-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
-        <a class="ql-card" href="#results">
+        <a class="ql-card" href="results.html">
           <div class="ql-icon-wrap"><img class="ql-img" src="images/icon-results.png" alt="" width="40" height="40"></div>
           <div class="ql-card-text"><h3>大会結果</h3><p>県内大会・ブロック大会の結果を掲載します。</p></div>
           <span class="ql-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -728,15 +728,16 @@
     <div class="wrap">
       <div class="section-head">
         <div><div class="kicker">RESULT</div><h2>大会結果</h2></div>
-        <a class="more" href="#">大会結果を全て見る &gt;</a>
+        <a class="more" href="results.html">大会結果を全て見る &gt;</a>
       </div>
-      <div class="results-grid">
-        <div class="result-slot"><div class="medal medal-1">1</div><span class="label">優勝</span><p>結果は大会終了後に<br>掲載します</p></div>
-        <div class="result-slot"><div class="medal medal-2">2</div><span class="label">準優勝</span><p>結果は大会終了後に<br>掲載します</p></div>
-        <div class="result-slot"><div class="medal medal-3">3</div><span class="label">第3位</span><p>結果は大会終了後に<br>掲載します</p></div>
-      </div>
-    </div>
-  </section>
+      <div class="results-grid" id="topResults"></div>
+      <script src="data.js"></script>
+      <script>
+      (function(){var R=window.JDBA_RESULTS[0],D=R.divisions[0],L=["優勝","準優勝","第3位"],h='<p class="top-res-title" style="grid-column:1/-1;margin:0 0 2px;font-size:12px;font-weight:800;color:var(--blue-900)">'+R.name+(D.name?'（'+D.name+'）':'')+'</p>';
+      D.teams.forEach(function(t,k){h+='<div class="result-slot"><div class="medal medal-'+(k+1)+'">'+(k+1)+'</div><span class="label">'+L[k]+'</span><p>'+t+'</p></div>';});
+      document.getElementById("topResults").innerHTML=h;})();
+      </script>
+    </div></section>
 
   <section id="teams" class="teams">
     <img class="mascot-bg " src="images/mascot-bg.png" alt="" aria-hidden="true" style="left:2%;bottom:-22%;width:170px;opacity:.22;transform:rotate(-8deg) scaleX(-1)">
@@ -793,7 +794,7 @@
       <ul>
         <li><a href="#news">お知らせ</a></li>
         <li><a href="schedule.html">年間の大会予定</a></li>
-        <li><a href="#results">大会結果</a></li>
+        <li><a href="results.html">大会結果</a></li>
         <li><a href="teams.html">登録チーム紹介</a></li>
       </ul>
     </div>
