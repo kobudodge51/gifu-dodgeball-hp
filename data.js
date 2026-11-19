@@ -7,7 +7,7 @@ window.JDBA_TOURNAMENTS = [
   {name:"ヒマラヤカップ2026", date:"2026-10-18", venue:"岐阜メモリアルセンター で愛・ふれ愛ドーム", org:"岐阜県協会", note:"10月17日(土) 13時〜準備", entry:"closed"},
   {name:"ぴょこたんカップ2026", date:"2026-11-21", venue:"OKBぎふ清流アリーナ", org:"岐阜県協会", note:"クリスマスパーティ", url:"https://kobudodge51.github.io/pyoko2026/", urlLabel:"速報ページ"},
   {name:"第19回 霞渓杯", date:"2026-11-29", venue:"池田町総合体育館", org:"霞渓杯実行委員会", entry:"open"},
-  {name:"BEPPIN CUP 2026", date:"2026-12-06", venue:"池田町総合体育館", org:"岐阜県協会"},
+  {name:"関ケ原合戦2026", date:"2026-12-06", venue:"池田町総合体育館", org:"岐阜県協会"},
   {name:"第36回 春の全国小学生ドッジボール選手権 岐阜県大会", date:"2027-02-14", venue:"池田町総合体育館", org:"岐阜県協会"},
   {name:"6年生ファイナルドッジ", date:null, venue:"未定", org:"岐阜県協会"}
 ];
