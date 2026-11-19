@@ -600,6 +600,19 @@
   .ql-card p{font-size:9.5px;line-height:1.5;}
   .ql-icon-wrap,.ql-card:nth-child(2) .ql-icon-wrap,.ql-card:nth-child(3) .ql-icon-wrap,.ql-card:nth-child(4) .ql-icon-wrap{width:34px;height:34px;}
   .ql-img{width:32px;height:32px;}
+
+  /* v9: 大会結果（直近5大会の細いバー） */
+  .res-bars{display:flex;flex-direction:column;gap:5px;}
+  .res-bar{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.88);border:1px solid #eadff5;text-decoration:none;color:inherit;
+    box-shadow:0 8px 16px -14px rgba(18,41,79,.4);transition:transform .2s, border-color .2s, box-shadow .2s;}
+  .res-bar:hover{transform:translateY(-1px);border-color:var(--gold-300);box-shadow:0 12px 20px -14px rgba(106,63,181,.45);}
+  .rb-date{flex:none;font-family:"M PLUS Rounded 1c";font-size:10.5px;font-weight:800;color:#fff;padding:2px 8px;border-radius:7px;background:linear-gradient(120deg,#0e2145,#2f6fc7);min-width:68px;text-align:center;}
+  .rb-main{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px;}
+  .rb-name{font-size:12px;font-weight:800;color:var(--blue-900);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rb-win{font-size:10.5px;color:var(--ink-soft);line-height:1.45;}
+  .rb-medal{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;margin-right:4px;font-style:normal;font-size:8px;font-weight:900;color:#fff;background:linear-gradient(135deg,#f3d27a,#b4871a);vertical-align:1px;}
+  .more-div{margin-left:6px;font-size:9.5px;font-weight:800;color:var(--violet-700);background:#f1ecff;border-radius:999px;padding:0 7px;}
+  .rb-arrow{flex:none;color:var(--pink-700);font-weight:900;}
 </style>
 </head>
 <body>
@@ -730,14 +743,22 @@
         <div><div class="kicker">RESULT</div><h2>大会結果</h2></div>
         <a class="more" href="results.html">大会結果を全て見る &gt;</a>
       </div>
-      <div class="results-grid" id="topResults"></div>
+      <div class="res-bars" id="topResults"></div>
       <script src="data.js"></script>
       <script>
-      (function(){var R=window.JDBA_RESULTS[0],D=R.divisions[0],L=["優勝","準優勝","第3位"],h='<p class="top-res-title" style="grid-column:1/-1;margin:0 0 2px;font-size:12px;font-weight:800;color:var(--blue-900)">'+R.name+(D.name?'（'+D.name+'）':'')+'</p>';
-      D.teams.forEach(function(t,k){h+='<div class="result-slot"><div class="medal medal-'+(k+1)+'">'+(k+1)+'</div><span class="label">'+L[k]+'</span><p>'+t+'</p></div>';});
-      document.getElementById("topResults").innerHTML=h;})();
+      (function(){
+        function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+        var R=window.JDBA_RESULTS.slice(0,5);
+        document.getElementById("topResults").innerHTML=R.map(function(r){
+          var d=r.divisions[0],w=d.teams[0];w=Array.isArray(w)?w[1]:w;
+          var more=r.divisions.length>1?'<span class="more-div">ほか'+(r.divisions.length-1)+'部門</span>':'';
+          var dt=r.date?(function(p){return p[0]+'.'+('0'+p[1]).slice(-2)+'.'+('0'+p[2]).slice(-2);})(r.date.split("-").map(Number)):'日程確認中';
+          return '<a class="res-bar" href="results.html"><span class="rb-date">'+dt+'</span><span class="rb-main"><b class="rb-name">'+esc(r.name)+'</b><span class="rb-win"><i class="rb-medal">1</i>'+(d.name?esc(d.name.split('　')[0].replace('の部',''))+'　':'')+esc(w)+more+'</span></span><span class="rb-arrow">›</span></a>';
+        }).join("");
+      })();
       </script>
-    </div></section>
+    </div>
+  </section>
 
   <section id="teams" class="teams">
     <img class="mascot-bg " src="images/mascot-bg.png" alt="" aria-hidden="true" style="left:2%;bottom:-22%;width:170px;opacity:.22;transform:rotate(-8deg) scaleX(-1)">
