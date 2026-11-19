@@ -581,12 +581,25 @@
 
   /* v6: クイックリンクを常に2×2に（ヒーローの重複ボタンは削除） */
   .ql-grid{grid-template-columns:repeat(2,1fr)!important;gap:8px;max-width:760px;margin:0 auto;}
-  .ql-card{flex-direction:column;align-items:center;text-align:center;gap:4px;padding:12px 10px 10px;}
-  .ql-card-text h3{font-size:13px;margin:0 0 2px;}
+  .ql-card{flex-direction:row;align-items:center;text-align:left;gap:8px;padding:12px 26px 12px 10px;}
+  .ql-card-text h3{font-size:12.5px;margin:0 0 2px;line-height:1.3;}
   .ql-card-text p{font-size:10px;line-height:1.5;margin:0;}
   .ql-arrow{position:absolute;top:8px;right:8px;}
-  .ql-icon-wrap,.ql-card:nth-child(2) .ql-icon-wrap,.ql-card:nth-child(3) .ql-icon-wrap,.ql-card:nth-child(4) .ql-icon-wrap{width:52px;height:52px;}
-  .ql-img{width:50px;height:50px;}
+  .ql-icon-wrap,.ql-card:nth-child(2) .ql-icon-wrap,.ql-card:nth-child(3) .ql-icon-wrap,.ql-card:nth-child(4) .ql-icon-wrap{width:38px;height:38px;}
+  .ql-img{width:36px;height:36px;}
+
+  /* v7: メニューカードの説明文を表示 */
+  .ql-card p{display:block!important;font-size:10.5px;line-height:1.55;color:var(--ink-soft);margin:2px 0 0;}
+  .ql-card h3{white-space:normal;}
+  .ql-card{padding-bottom:12px;}
+
+  /* v8: 2×2でも読みやすく */
+  .ql-card{padding:11px 8px 11px 9px;gap:7px;}
+  .ql-arrow{display:none;}
+  .ql-card h3{white-space:nowrap;font-size:12px;letter-spacing:-.02em;}
+  .ql-card p{font-size:9.5px;line-height:1.5;}
+  .ql-icon-wrap,.ql-card:nth-child(2) .ql-icon-wrap,.ql-card:nth-child(3) .ql-icon-wrap,.ql-card:nth-child(4) .ql-icon-wrap{width:34px;height:34px;}
+  .ql-img{width:32px;height:32px;}
 </style>
 </head>
 <body>
