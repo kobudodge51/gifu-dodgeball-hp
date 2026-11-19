@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>年間の大会予定｜岐阜県ドッジボール協会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff; --paper:#f7fafc; --ink:#16202a; --ink-soft:#57697a;
+    --blue-900:#12294f; --blue-700:#1e4c8c; --blue-500:#2f7fe0; --blue-300:#8fc3f2; --blue-100:#e6f2fc;
+    --yellow-700:#d99400; --yellow-500:#ffc627; --yellow-300:#ffe38a; --yellow-100:#fff8e2;
+    --pink-700:#c41e5c; --pink-500:#ef4f8c; --pink-300:#fba3c3; --pink-100:#ffedf4;
+    --radius:18px; --maxw:1160px;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html{scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:"Noto Sans JP", sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:"M PLUS Rounded 1c", sans-serif;margin:0;line-height:1.3;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(18,41,79,.08);padding-top:env(safe-area-inset-top,0px);}
+  .header-bar{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{width:44px;height:44px;flex:none;object-fit:contain;}
+  .brand-text{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:15px;letter-spacing:.02em;line-height:1.25;}
+  .brand-text small{display:block;font-family:"Noto Sans JP";font-weight:500;font-size:10px;color:var(--ink-soft);letter-spacing:.08em;}
+  nav.primary-nav{display:flex;gap:6px;}
+  nav.primary-nav a{font-size:14px;font-weight:700;padding:10px 14px;border-radius:999px;color:var(--blue-900);transition:background .15s ease, color .15s ease;}
+  nav.primary-nav a:hover{background:var(--blue-100);}
+  nav.primary-nav a.active{background:var(--pink-100);color:var(--pink-700);}
+  nav.primary-nav a.cta{background:var(--pink-500);color:var(--white);}
+  nav.primary-nav a.cta:hover{background:var(--pink-700);}
+  .navline{height:4px;background:linear-gradient(90deg,var(--blue-500) 0 33%, var(--yellow-500) 33% 66%, var(--pink-500) 66% 100%);}
+  .menu-btn{display:none;background:none;border:none;padding:8px;cursor:pointer;}
+  .menu-btn span{display:block;width:22px;height:2px;background:var(--blue-900);margin:5px 0;border-radius:2px;}
+
+  .page-hero{padding:52px 0 40px;background:radial-gradient(560px 320px at 88% 0%, var(--blue-100) 0%, transparent 70%);}
+  .kicker{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--pink-700);margin-bottom:8px;}
+  .page-hero h1{font-size:clamp(26px,4vw,38px);font-weight:900;color:var(--blue-900);}
+  .page-hero p{margin:16px 0 0;font-size:14.5px;line-height:1.9;color:var(--ink-soft);max-width:56ch;}
+  .fy-badge{display:inline-flex;align-items:center;gap:8px;margin-top:22px;background:var(--white);border:1px solid #e2e8f0;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;color:var(--blue-700);}
+
+  section.sched-section{padding:20px 0 30px;}
+  section.sched-section:last-of-type{padding-bottom:90px;}
+  .sub-head{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .sub-head h2{font-size:20px;font-weight:900;color:var(--blue-900);}
+  .sub-head .count{font-size:12.5px;font-weight:700;color:var(--ink-soft);background:var(--paper);border-radius:999px;padding:4px 12px;}
+
+  .sched-list{display:flex;flex-direction:column;gap:14px;}
+  .sched-card{
+    display:grid;grid-template-columns:172px 1fr auto;gap:20px;align-items:center;
+    background:var(--white);border:1px solid #eaeff4;border-radius:16px;padding:18px 22px;
+    box-shadow:0 14px 30px -26px rgba(18,41,79,.35);
+  }
+  .sched-card.is-past{opacity:.72;background:var(--paper);box-shadow:none;}
+  .date-badge{display:flex;align-items:center;justify-content:center;border-radius:12px;padding:14px 10px;color:var(--white);text-align:center;}
+  .date-badge .dt-full{font-family:"M PLUS Rounded 1c";font-size:16px;font-weight:800;line-height:1.35;}
+  .month-a{background:var(--blue-700);}
+  .month-b{background:var(--yellow-500);color:var(--blue-900);}
+  .month-c{background:var(--pink-500);}
+  .sched-body h3{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-soft);}
+  .meta-row span{display:flex;align-items:center;gap:5px;}
+  .meta-row svg{width:14px;height:14px;flex:none;}
+  .note-line{margin-top:8px;font-size:12px;color:var(--pink-700);background:var(--pink-100);display:inline-block;padding:4px 10px;border-radius:8px;}
+  .status-col{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  .status-tag{font-size:11.5px;font-weight:700;padding:6px 14px;border-radius:999px;white-space:nowrap;}
+  .status-upcoming{background:var(--blue-100);color:var(--blue-700);}
+  .status-past{background:#e7ebf0;color:#6b7684;}
+  .status-tbd{background:var(--yellow-100);color:var(--yellow-700);}
+  .entry-tag{font-size:11px;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+  .entry-tag .dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+  .entry-closed{background:#e7ebf0;color:#6b7684;}
+  .entry-open{background:var(--pink-100);color:var(--pink-700);}
+
+  footer{background:var(--blue-900);color:#cfdbea;margin-top:0;padding:56px 0 calc(28px + env(safe-area-inset-bottom, 0px));}
+  .footer-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:28px;}
+  .footer-brand .brand-text{color:var(--white);}
+  .footer-brand p{font-size:12.5px;line-height:1.9;color:#9fb2ca;margin-top:14px;max-width:34ch;}
+  footer h4{font-size:13px;color:var(--white);margin-bottom:14px;font-weight:700;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{font-size:13px;color:#b7c7dd;}
+  footer a:hover{color:var(--yellow-500);}
+  .footer-bottom{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#8298b6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:920px){
+    nav.primary-nav{display:none;}
+    .menu-btn{display:block;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .sched-card{grid-template-columns:1fr;grid-template-areas:"date" "body" "status";gap:12px;}
+    .date-badge{grid-area:date;justify-content:flex-start;padding:8px 14px;}
+    .sched-body{grid-area:body;}
+    .status-col{grid-area:status;flex-direction:row;align-items:center;}
+  }
+  @media (max-width:520px){
+    .footer-grid{grid-template-columns:1fr;}
+    .sched-card{padding:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-bar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="images/mascot.jpg" alt="岐阜県ドッジボール協会 マスコット" id="brandMark">
+      <span class="brand-text">岐阜県ドッジボール協会<small>JDBA GIFU</small></span>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html#news">お知らせ</a>
+      <a class="active" href="#top">年間の大会予定</a>
+      <a href="index.html#results">大会結果</a>
+      <a href="teams.html">登録チーム紹介</a>
+      <a class="cta" href="index.html#contact">お問い合わせ</a>
+    </nav>
+    <button class="menu-btn" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="navline"></div>
+
+<main id="top">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="kicker">TOURNAMENT SCHEDULE</div>
+      <h1>年間の大会予定</h1>
+      <p>2026年度（2026年4月〜2027年3月）に岐阜県内で開催される大会の一覧です。終了した大会も含めて掲載しています。</p>
+      <div class="fy-badge">📅 2026年度（令和8年度）</div>
+    </div>
+  </section>
+
+  <section class="sched-section">
+    <div class="wrap">
+      <div class="sub-head"><h2>開催予定の大会</h2><span class="count">6件</span></div>
+      <div class="sched-list">
+
+        <div class="sched-card">
+          <div class="date-badge month-a"><span class="dt-full">10月18日（日）</span></div>
+          <div class="sched-body">
+            <h3>ヒマラヤカップ2026</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>岐阜メモリアルセンター で愛・ふれ愛ドーム</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+            <span class="note-line">10月17日(土) 13時〜準備</span>
+          </div>
+          <div class="status-col">
+            <span class="status-tag status-upcoming">開催予定</span>
+            <span class="entry-tag entry-closed"><span class="dot"></span>締切済</span>
+          </div>
+        </div>
+
+        <div class="sched-card">
+          <div class="date-badge month-b"><span class="dt-full">11月21日（土）</span></div>
+          <div class="sched-body">
+            <h3>ぴょこたんカップ</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>OKB岐阜清流アリーナ</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+          </div>
+          <div class="status-col">
+            <span class="status-tag status-upcoming">開催予定</span>
+          </div>
+        </div>
+
+        <div class="sched-card">
+          <div class="date-badge month-b"><span class="dt-full">11月29日（日）</span></div>
+          <div class="sched-body">
+            <h3>第19回 霞渓杯</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>池田町総合体育館</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：霞渓杯実行委員会</span>
+            </div>
+          </div>
+          <div class="status-col">
+            <span class="status-tag status-upcoming">開催予定</span>
+            <span class="entry-tag entry-open"><span class="dot"></span>募集中</span>
+          </div>
+        </div>
+
+        <div class="sched-card">
+          <div class="date-badge month-c"><span class="dt-full">12月6日（日）</span></div>
+          <div class="sched-body">
+            <h3>BEPPIN CUP 2026</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>池田町総合体育館</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+          </div>
+          <div class="status-col">
+            <span class="status-tag status-upcoming">開催予定</span>
+          </div>
+        </div>
+
+        <div class="sched-card">
+          <div class="date-badge month-a"><span class="dt-full">2月14日（日）</span></div>
+          <div class="sched-body">
+            <h3>第36回 春の全国小学生ドッジボール選手権 岐阜県大会</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>池田町総合体育館</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+          </div>
+          <div class="status-col">
+            <span class="status-tag status-upcoming">開催予定</span>
+          </div>
+        </div>
+
+        <div class="sched-card">
+          <div class="date-badge month-b"><span class="dt-full">日程未定</span></div>
+          <div class="sched-body">
+            <h3>6年生ファイナルドッジ</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>会場：未定</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+          </div>
+          <div class="status-col">
+            <span class="status-tag status-tbd">日程未定</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sched-section">
+    <div class="wrap">
+      <div class="sub-head"><h2>終了した大会</h2><span class="count">4件</span></div>
+      <div class="sched-list">
+
+        <div class="sched-card is-past">
+          <div class="date-badge month-a"><span class="dt-full">4月26日（日）</span></div>
+          <div class="sched-body">
+            <h3>C級審判認定会・伝達レベルアップ講習会</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>席田小学校 他</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+          </div>
+          <div class="status-col"><span class="status-tag status-past">終了</span></div>
+        </div>
+
+        <div class="sched-card is-past">
+          <div class="date-badge month-b"><span class="dt-full">6月7日（日）</span></div>
+          <div class="sched-body">
+            <h3>第21回 さるぼぼカップ in 高山</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>飛騨高山ビッグアリーナ</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+            <span class="note-line">6月6日(土) 親子ドッジ・準備</span>
+          </div>
+          <div class="status-col"><span class="status-tag status-past">終了</span></div>
+        </div>
+
+        <div class="sched-card is-past">
+          <div class="date-badge month-b"><span class="dt-full">6月27日（土）</span></div>
+          <div class="sched-body">
+            <h3>フレッシュカップ</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>池田町総合体育館</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：フレッシュカップ実行委員会</span>
+            </div>
+          </div>
+          <div class="status-col"><span class="status-tag status-past">終了</span></div>
+        </div>
+
+        <div class="sched-card is-past">
+          <div class="date-badge month-c"><span class="dt-full">7月19日（日）</span></div>
+          <div class="sched-body">
+            <h3>第35回 夏の全国小学生ドッジボール選手権 岐阜県大会</h3>
+            <div class="meta-row">
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>池田町総合体育館</span>
+              <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg>主催：岐阜県協会</span>
+            </div>
+          </div>
+          <div class="status-col"><span class="status-tag status-past">終了</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="brand-text">岐阜県ドッジボール協会</span>
+      <p>一般財団法人日本ドッジボール協会 加盟団体として、岐阜県内のドッジボール普及・大会運営を行っています。</p>
+    </div>
+    <div>
+      <h4>サイトメニュー</h4>
+      <ul>
+        <li><a href="index.html#news">お知らせ</a></li>
+        <li><a href="#top">年間の大会予定</a></li>
+        <li><a href="index.html#results">大会結果</a></li>
+        <li><a href="teams.html">登録チーム紹介</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>協会について</h4>
+      <ul>
+        <li><a href="index.html">トップページ</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>関連リンク</h4>
+      <ul>
+        <li><a href="https://dodgeball.or.jp" target="_blank" rel="noopener">日本ドッジボール協会</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 岐阜県ドッジボール協会</span>
+    <span>内容は随時更新されます</span>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.querySelector('.primary-nav');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.style.display === 'flex';
+    nav.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;padding:12px 24px;box-shadow:0 12px 24px -12px rgba(0,0,0,.15);';
+  });
+</script>
+</body>
+</html>
