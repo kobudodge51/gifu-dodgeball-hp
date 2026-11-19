@@ -646,6 +646,10 @@
   @media (max-width:520px){.team-grid{grid-template-columns:1fr 1fr;gap:6px;}.sched-card{padding:6px;}}
   .lk-live{display:inline-block;margin-top:3px;font-size:10px;font-weight:800;color:#fff;text-decoration:none;padding:1px 10px;border-radius:999px;background:linear-gradient(120deg,#f27aa8,#d92a6c 55%,#8d6be0);}
   .lk-live:hover{filter:brightness(1.08);}
+  .spec{display:flex;flex-wrap:wrap;gap:3px 6px;margin:4px 0 0;}
+  .spec div{display:inline-flex;align-items:center;gap:5px;font-size:10px;background:#f6f1ff;border-radius:6px;padding:1px 8px;}
+  .spec dt{font-weight:800;color:var(--violet-700);}
+  .spec dd{margin:0;color:var(--ink);font-weight:700;}
 </style>
 </head>
 <body>
@@ -753,7 +757,12 @@
     else tags+='<span class="status-tag status-tbd">日程未定</span>';
     if(t.status!=="past"&&t.entry==="open") tags+='<span class="entry-tag entry-open"><span class="dot"></span>募集中</span>';
     if(t.status!=="past"&&t.entry==="closed") tags+='<span class="entry-tag entry-closed"><span class="dot"></span>締切済</span>';
-    return '<div class="'+cls+'"><div class="date-badge '+mc+'"><span class="dt-full">'+date+'</span></div><div class="sched-body"><h3>'+esc(t.name)+'</h3><div class="meta-row"><span>'+pin+(t.venue==="未定"?"会場：未定":esc(t.venue))+'</span><span>'+org+'主催：'+esc(t.org)+'</span></div>'+(t.note?'<span class="note-line">'+esc(t.note)+'</span>':'')+(t.url?' <a class="lk-live" href="'+esc(t.url)+'" target="_blank" rel="noopener">'+esc(t.urlLabel||'詳細')+' ›</a>':'')+'</div><div class="status-col">'+tags+'</div></div>';
+    return '<div class="'+cls+'"><div class="date-badge '+mc+'"><span class="dt-full">'+date+'</span></div><div class="sched-body"><h3>'+esc(t.name)+'</h3><div class="meta-row"><span>'+pin+(t.venue==="未定"?"会場：未定":esc(t.venue))+'</span><span>'+org+'主催：'+esc(t.org)+'</span></div>'+(t.note?'<span class="note-line">'+esc(t.note)+'</span>':'')+(function(){var r=[];
+      if(t.categories&&t.categories.length) r.push(['カテゴリー',t.categories.join(' / ')]);
+      if(t.capacity) r.push(['募集チーム数',t.capacity]);
+      if(t.deadline) r.push(['申込締切',t.deadline]);
+      if(t.fee) r.push(['参加費',t.fee]);
+      return r.length?'<dl class="spec">'+r.map(function(x){return '<div><dt>'+x[0]+'</dt><dd>'+esc(x[1])+'</dd></div>';}).join("")+'</dl>':"";})()+(t.url?' <a class="lk-live" href="'+esc(t.url)+'" target="_blank" rel="noopener">'+esc(t.urlLabel||'要項')+' ›</a>':'')+'</div><div class="status-col">'+tags+'</div></div>';
   }
   function section(title,list){return list.length?'<div class="sub-head"><h2>'+title+'</h2><span class="count">'+list.length+'件</span></div><div class="sched-list">'+list.map(card).join("")+'</div>':"";}
   function render(){
