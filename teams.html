@@ -667,6 +667,16 @@
   .lk:hover{transform:translateY(-1px);box-shadow:0 8px 14px -8px rgba(106,63,181,.55);}
   .lk-ig{color:#fff;background:linear-gradient(120deg,#f4a742,#d92a6c 55%,#8d6be0);}
   .lk-hp{color:var(--blue-900);border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,var(--gold-500),var(--pink-500),var(--violet-500)) border-box;}
+
+  /* v4: リンクを控えめな文字リンクに */
+  .team-card .links{display:flex;flex-wrap:nowrap;gap:12px;margin-top:5px;align-items:center;}
+  .lk,.lk-ig,.lk-hp{display:inline-block;font-size:11px;font-weight:700;padding:0 0 1px;border:0;border-radius:0;background:none;box-shadow:none;color:var(--pink-700);text-decoration:none;border-bottom:1px solid rgba(196,30,92,.35);white-space:nowrap;}
+  .lk svg{display:none;}
+  .lk-hp{color:var(--blue-700);border-bottom-color:rgba(30,76,140,.35);}
+  .lk::after{content:" ›";}
+  .lk:hover{transform:none;box-shadow:none;border-bottom-color:currentColor;}
+  .team-banner .zoom{display:none;}
+  .team-card .tc-body{padding-bottom:2px;}
 </style>
 </head>
 <body>
