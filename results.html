@@ -664,6 +664,7 @@
   .medal-1{background:linear-gradient(135deg,#f3d27a,#b4871a);}
   .medal-2{background:linear-gradient(135deg,#d8dde4,#8b95a3);}
   .medal-3{background:linear-gradient(135deg,#e6b08a,#a8683a);}
+  .medal-4{background:linear-gradient(135deg,#cfc6ea,#8d6be0);}
   .rk .lbl{width:44px;font-size:10px;font-weight:800;color:var(--ink-soft);flex:none;}
   .rk .tn{font-weight:700;color:var(--ink);}
   .rk1 .tn{font-weight:900;}
@@ -750,12 +751,13 @@
 <script>
 (function(){
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
-  var L=["優勝","準優勝","第3位"], M=["1","2","3"];
-  var pref=/(岐阜県|池田町|岐阜市|可児市|本巣市|高山市|揖斐郡)/;
-  function row(t,i){var gifu=pref.test(t);return '<li class="rk rk'+(i+1)+(gifu?' gifu':'')+'"><span class="medal medal-'+(i+1)+'">'+M[i]+'</span><span class="lbl">'+L[i]+'</span><span class="tn">'+esc(t)+'</span></li>';}
+  var L=["","優勝","準優勝","第3位","第4位"];
+  var pref=/（(岐阜県|池田町|岐阜市|可児市|本巣市|高山市|揖斐郡[^）]*)）/;
+  function row(e,i){var rk=Array.isArray(e)?e[0]:i+1,t=Array.isArray(e)?e[1]:e,gifu=pref.test(t);return '<li class="rk rk'+rk+(gifu?' gifu':'')+'"><span class="medal medal-'+rk+'">'+rk+'</span><span class="lbl">'+L[rk]+'</span><span class="tn">'+esc(t)+'</span></li>';}
   var h=window.JDBA_RESULTS.map(function(r){
-    var p=r.date.split("-").map(Number);
-    return '<article class="res-card"><header><h2>'+esc(r.name)+'</h2><div class="meta-row"><span>'+p[0]+'年'+p[1]+'月'+p[2]+'日</span><span>'+esc(r.venue)+'</span></div>'+(r.note?'<p class="res-note">'+esc(r.note)+'</p>':'')+'</header><div class="div-grid">'+r.divisions.map(function(d){return '<section class="div-box">'+(d.name?'<h3>'+esc(d.name)+'</h3>':'')+'<ul>'+d.teams.map(row).join("")+'</ul></section>';}).join("")+'</div></article>';
+    var p=r.date?r.date.split("-").map(Number):null;
+    var meta=(p?'<span>'+p[0]+'年'+p[1]+'月'+p[2]+'日</span>':'')+(r.venue?'<span>'+esc(r.venue)+'</span>':'');
+    return '<article class="res-card"><header><h2>'+esc(r.name)+'</h2>'+(meta?'<div class="meta-row">'+meta+'</div>':'')+(r.note?'<p class="res-note">'+esc(r.note)+'</p>':'')+'</header><div class="div-grid">'+r.divisions.map(function(d){return '<section class="div-box">'+(d.name?'<h3>'+esc(d.name)+'</h3>':'')+'<ul>'+d.teams.map(row).join("")+'</ul></section>';}).join("")+'</div></article>';
   }).join("");
   document.getElementById("resList").innerHTML=h;
 })();
