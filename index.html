@@ -574,6 +574,10 @@
   .about-note .eyebrow-line{margin-bottom:4px;}
   .about-note .lede{margin:0;max-width:60ch;}
   @media (max-width:520px){.mascot-bg{transform-origin:center;}.hero .mascot-bg,.tournaments .mascot-bg,.teams .mascot-bg{width:110px !important;}}
+
+  /* v5: クイックリンクのイラストアイコン */
+  .ql-icon-wrap,.ql-card:nth-child(2) .ql-icon-wrap,.ql-card:nth-child(3) .ql-icon-wrap,.ql-card:nth-child(4) .ql-icon-wrap{width:42px;height:42px;border-radius:0;background:none;display:flex;align-items:center;justify-content:center;}
+  .ql-img{width:40px;height:40px;object-fit:contain;display:block;}
 </style>
 </head>
 <body>
@@ -632,22 +636,22 @@
     <div class="wrap quicklinks">
       <div class="ql-grid">
         <a class="ql-card" href="schedule.html">
-          <div class="ql-icon-wrap"><svg class="ql-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="#c41e5c" stroke-width="0.75"/><path d="M3 9h18M8 3v4M16 3v4" stroke="#c41e5c" stroke-width="0.75" stroke-linecap="round"/></svg></div>
+          <div class="ql-icon-wrap"><img class="ql-img" src="images/icon-schedule.png" alt="" width="40" height="40"></div>
           <div class="ql-card-text"><h3>年間の大会予定</h3><p>県内で開催される大会の日程・会場をご案内します。</p></div>
           <span class="ql-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a class="ql-card" href="teams.html">
-          <div class="ql-icon-wrap"><svg class="ql-icon" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="9" r="3" stroke="#b4871a" stroke-width="0.75"/><circle cx="17" cy="9" r="3" stroke="#b4871a" stroke-width="0.75"/><path d="M2 21c0-3.3 2.7-6 6-6s6 2.7 6 6M11 21c0-2.5 1.6-4.6 4-5.5 2.4.9 4 3 4 5.5" stroke="#b4871a" stroke-width="0.75" stroke-linecap="round"/></svg></div>
+          <div class="ql-icon-wrap"><img class="ql-img" src="images/icon-teams.png" alt="" width="40" height="40"></div>
           <div class="ql-card-text"><h3>登録チーム紹介</h3><p>岐阜県に登録するチームをご紹介します。</p></div>
           <span class="ql-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a class="ql-card" href="#results">
-          <div class="ql-icon-wrap"><svg class="ql-icon" viewBox="0 0 24 24" fill="none"><path d="M8 3h8v4a4 4 0 0 1-8 0V3z" stroke="#1e4c8c" stroke-width="0.75"/><path d="M8 4H4v2a4 4 0 0 0 4 4M16 4h4v2a4 4 0 0 1-4 4" stroke="#1e4c8c" stroke-width="0.75" stroke-linecap="round"/><path d="M12 11v6M9 21h6M10 17h4v4h-4z" stroke="#1e4c8c" stroke-width="0.75" stroke-linejoin="round"/></svg></div>
+          <div class="ql-icon-wrap"><img class="ql-img" src="images/icon-results.png" alt="" width="40" height="40"></div>
           <div class="ql-card-text"><h3>大会結果</h3><p>県内大会・ブロック大会の結果を掲載します。</p></div>
           <span class="ql-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a class="ql-card" href="#contact">
-          <div class="ql-icon-wrap"><svg class="ql-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#c41e5c" stroke-width="0.75"/><path d="M3.5 6.5 12 13l8.5-6.5" stroke="#c41e5c" stroke-width="0.75" stroke-linecap="round"/></svg></div>
+          <div class="ql-icon-wrap"><img class="ql-img" src="images/icon-contact.png" alt="" width="40" height="40"></div>
           <div class="ql-card-text"><h3>お問い合わせ</h3><p>チーム登録・大会に関するご質問はこちら。</p></div>
           <span class="ql-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
