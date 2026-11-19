@@ -44,7 +44,9 @@ window.JDBA_RESULTS = [
     {name:"オフィシャルの部　決勝トーナメント", teams:["新庄ソルジャーズ（奈良県）","ガンバベアーズ（岐阜市）","Attacks Zero1（富山県）","針原パイレーツ（富山県）"]},
     {name:"ジュニアの部", teams:["SOULMAX池田Jr（岐阜県）","ガッツJ（愛知県）",[3,"島デビチビターズ（岐阜市）"],[3,"ガンバベアーズJr（岐阜市）"]]}
   ]},
-  {name:"コモカップ　岐阜県大会", date:null, venue:"", divisions:[
+  {name:"コモカップ　リトルの部　岐阜県予選", date:"2026-09-21", venue:"岐阜市岐陽体育館", note:"9月21日（祝・月）", divisions:[
     {name:"リトルの部", teams:["ガンバレクマサン（岐阜市）","SOUL MAX池田 リトル（揖斐郡池田町）","6ネンズSP ちび（本巣市）","JOUSEI りとる（岐阜市）"]}
   ]}
 ];
+/* 日付の新しい順に並べる（日付なしは最後） */
+window.JDBA_RESULTS.sort(function(a,b){return (b.date||"0")<(a.date||"0")?-1:1;});

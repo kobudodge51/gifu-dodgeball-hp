@@ -652,26 +652,37 @@
   .spec dt{font-weight:800;color:var(--violet-700);white-space:nowrap;flex:none;}
   .spec dd{margin:0;color:var(--ink);font-weight:700;}
 
-  .res-card{background:#fff;border:1px solid #eee8f5;border-radius:14px;padding:12px 14px;margin-bottom:12px;box-shadow:0 10px 22px -20px rgba(18,41,79,.4);}
-  .res-card h2{font-size:14px;font-weight:900;color:var(--blue-900);margin-bottom:3px;}
-  .res-note{margin:6px 0 0;font-size:10.5px;font-weight:700;color:var(--pink-700);background:var(--pink-100);display:inline-block;padding:2px 10px;border-radius:8px;line-height:1.5;}
-  .div-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin-top:10px;}
-  .div-box{border-radius:10px;padding:8px 10px;background:linear-gradient(135deg,#fff,#f6f1ff);border:1px solid #eadff5;}
-  .div-box h3{font-size:12px;font-weight:900;color:var(--violet-700);margin-bottom:4px;}
-  .div-box ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;}
-  .rk{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.4;padding:2px 0;}
-  .rk .medal{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex:none;}
+  .res-card{display:grid;grid-template-columns:64px 1fr;gap:12px;background:#fff;border:1px solid #eee8f5;border-radius:16px;padding:12px;margin-bottom:12px;position:relative;overflow:hidden;box-shadow:0 14px 28px -22px rgba(18,41,79,.45);}
+  .res-card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--gold-500),var(--pink-500),var(--violet-500));}
+  .res-date{align-self:start;border-radius:12px;padding:8px 4px;color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;line-height:1.15;box-shadow:0 8px 14px -10px rgba(14,33,69,.6);}
+  .res-date .y{font-size:9px;font-weight:800;opacity:.85;letter-spacing:.06em;}
+  .res-date .md{font-family:"M PLUS Rounded 1c";font-size:17px;font-weight:900;margin:1px 0;}
+  .res-date .w{font-size:10px;font-weight:800;background:rgba(255,255,255,.25);border-radius:999px;padding:0 8px;}
+  .mc0{background:linear-gradient(135deg,#c41e5c,#ef4f8c);}.mc1{background:linear-gradient(135deg,#d9ab3f,#f4a742);color:#3a2a05;}.mc2{background:linear-gradient(135deg,#0e2145,#2f6fc7);}.mc3{background:linear-gradient(135deg,#6a3fb5,#8d6be0);}.mc4{background:linear-gradient(135deg,#0e8a8a,#2fc0b8);}
+  .res-body{min-width:0;}
+  .res-card h2{font-size:14px;font-weight:900;color:var(--blue-900);line-height:1.4;margin:0 0 3px;}
+  .res-note{margin:5px 0 0;font-size:10.5px;font-weight:700;color:var(--pink-700);background:var(--pink-100);display:inline-block;padding:2px 10px;border-radius:8px;line-height:1.5;}
+  .div-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px;margin-top:10px;}
+  .div-box{border-radius:12px;padding:8px;background:linear-gradient(160deg,#fbf8ff,#f3edff);border:1px solid #e6dbf7;}
+  .div-box h3{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:linear-gradient(120deg,var(--violet-700),var(--pink-700));border-radius:999px;padding:1px 12px;margin:0 0 6px;}
+  .div-box ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;}
+  .rk{display:flex;align-items:center;gap:7px;font-size:12px;line-height:1.35;padding:5px 8px;border-radius:9px;background:#fff;border:1px solid #f0eaf8;}
+  .rk1{background:linear-gradient(100deg,#fff6d8,#fffdf5 70%);border-color:#f0dc9a;padding:7px 8px;}
+  .rk2{background:linear-gradient(100deg,#eef1f5,#fff 70%);border-color:#dde2ea;}
+  .rk3{background:linear-gradient(100deg,#fbeadc,#fff 70%);border-color:#efd3bd;}
+  .rk4{background:linear-gradient(100deg,#f0eafc,#fff 70%);border-color:#e0d6f5;}
+  .rk .medal{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex:none;box-shadow:0 3px 6px -3px rgba(0,0,0,.4);}
+  .rk1 .medal{width:26px;height:26px;font-size:13px;}
   .medal-1{background:linear-gradient(135deg,#f3d27a,#b4871a);}
   .medal-2{background:linear-gradient(135deg,#d8dde4,#8b95a3);}
   .medal-3{background:linear-gradient(135deg,#e6b08a,#a8683a);}
   .medal-4{background:linear-gradient(135deg,#cfc6ea,#8d6be0);}
-  .rk .lbl{width:44px;font-size:10px;font-weight:800;color:var(--ink-soft);flex:none;}
-  .rk .tn{font-weight:700;color:var(--ink);}
-  .rk1 .tn{font-weight:900;}
-  .rk.gifu .tn{color:var(--pink-700);}
-  .rk{justify-content:flex-start!important;text-align:left!important;}
-  .div-box ul{align-items:stretch;}
-  .rk .tn{flex:1;min-width:0;}
+  .rk .lbl{flex:none;width:42px;font-size:9.5px;font-weight:800;color:var(--ink-soft);}
+  .rk .tn{flex:1;min-width:0;font-weight:800;color:var(--ink);overflow-wrap:anywhere;}
+  .rk1 .tn{font-size:13.5px;font-weight:900;color:#5a3d00;}
+  .rk .rg{flex:none;font-size:9.5px;font-weight:800;padding:1px 8px;border-radius:999px;background:#eef1f5;color:#5b6675;white-space:nowrap;}
+  .rk .rg.gifu{background:linear-gradient(120deg,#ffe0ec,#ffd1e3);color:var(--pink-700);}
+  @media (max-width:520px){.res-card{grid-template-columns:1fr;}.res-date{flex-direction:row;gap:8px;justify-content:flex-start;padding:5px 12px;width:max-content;}.res-date .md{font-size:14px;margin:0;}.rk{flex-wrap:wrap;}.rk .lbl{width:auto;}.rk .rg{margin-left:auto;}}
 </style>
 </head>
 <body>
@@ -752,12 +763,20 @@
 (function(){
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
   var L=["","優勝","準優勝","第3位","第4位"];
-  var pref=/（(岐阜県|池田町|岐阜市|可児市|本巣市|高山市|揖斐郡[^）]*)）/;
-  function row(e,i){var rk=Array.isArray(e)?e[0]:i+1,t=Array.isArray(e)?e[1]:e,gifu=pref.test(t);return '<li class="rk rk'+rk+(gifu?' gifu':'')+'"><span class="medal medal-'+rk+'">'+rk+'</span><span class="lbl">'+L[rk]+'</span><span class="tn">'+esc(t)+'</span></li>';}
-  var h=window.JDBA_RESULTS.map(function(r){
+  var pin='<svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>';
+  var gifuRe=/^(岐阜|池田町|可児市|本巣市|高山市|揖斐郡)/;
+  function row(e,i){
+    var rk=Array.isArray(e)?e[0]:i+1,t=Array.isArray(e)?e[1]:e;
+    var m=t.match(/^(.*?)（(.*)）$/),nm=m?m[1]:t,rg=m?m[2]:"";
+    var gifu=rg&&gifuRe.test(rg);
+    return '<li class="rk rk'+rk+'"><span class="medal medal-'+rk+'">'+rk+'</span><span class="lbl">'+L[rk]+'</span><span class="tn">'+esc(nm)+'</span>'+(rg?'<span class="rg'+(gifu?' gifu':'')+'">'+esc(rg)+'</span>':'')+'</li>';
+  }
+  var h=window.JDBA_RESULTS.map(function(r,idx){
     var p=r.date?r.date.split("-").map(Number):null;
-    var meta=(p?'<span>'+p[0]+'年'+p[1]+'月'+p[2]+'日</span>':'')+(r.venue?'<span>'+esc(r.venue)+'</span>':'');
-    return '<article class="res-card"><header><h2>'+esc(r.name)+'</h2>'+(meta?'<div class="meta-row">'+meta+'</div>':'')+(r.note?'<p class="res-note">'+esc(r.note)+'</p>':'')+'</header><div class="div-grid">'+r.divisions.map(function(d){return '<section class="div-box">'+(d.name?'<h3>'+esc(d.name)+'</h3>':'')+'<ul>'+d.teams.map(row).join("")+'</ul></section>';}).join("")+'</div></article>';
+    var W=["日","月","火","水","木","金","土"];
+    var wd=p?W[new Date(Date.UTC(p[0],p[1]-1,p[2])).getUTCDay()]:"";
+    var badge=p?'<div class="res-date mc'+(p[1]%5)+'"><span class="y">'+p[0]+'</span><span class="md">'+p[1]+'/'+p[2]+'</span><span class="w">'+wd+'</span></div>':'<div class="res-date mc1"><span class="md">確認中</span></div>';
+    return '<article class="res-card">'+badge+'<div class="res-body"><h2>'+esc(r.name)+'</h2>'+(r.venue?'<div class="meta-row"><span>'+pin+esc(r.venue)+'</span></div>':'')+(r.note?'<p class="res-note">'+esc(r.note)+'</p>':'')+'<div class="div-grid">'+r.divisions.map(function(d){return '<section class="div-box">'+(d.name?'<h3>'+esc(d.name)+'</h3>':'')+'<ul>'+d.teams.map(row).join("")+'</ul></section>';}).join("")+'</div></div></article>';
   }).join("");
   document.getElementById("resList").innerHTML=h;
 })();
