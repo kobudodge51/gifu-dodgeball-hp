@@ -644,6 +644,8 @@
   .teams-note p{margin:0;font-size:10.5px;line-height:1.6;color:var(--ink-soft);}
   @media (max-width:920px){.team-grid{grid-template-columns:repeat(2,1fr);}.sched-card{grid-template-columns:84px 1fr;}.status-col{grid-column:1/-1;flex-direction:row;align-items:center;}}
   @media (max-width:520px){.team-grid{grid-template-columns:1fr 1fr;gap:6px;}.sched-card{padding:6px;}}
+  .lk-live{display:inline-block;margin-top:3px;font-size:10px;font-weight:800;color:#fff;text-decoration:none;padding:1px 10px;border-radius:999px;background:linear-gradient(120deg,#f27aa8,#d92a6c 55%,#8d6be0);}
+  .lk-live:hover{filter:brightness(1.08);}
 </style>
 </head>
 <body>
@@ -751,7 +753,7 @@
     else tags+='<span class="status-tag status-tbd">日程未定</span>';
     if(t.status!=="past"&&t.entry==="open") tags+='<span class="entry-tag entry-open"><span class="dot"></span>募集中</span>';
     if(t.status!=="past"&&t.entry==="closed") tags+='<span class="entry-tag entry-closed"><span class="dot"></span>締切済</span>';
-    return '<div class="'+cls+'"><div class="date-badge '+mc+'"><span class="dt-full">'+date+'</span></div><div class="sched-body"><h3>'+esc(t.name)+'</h3><div class="meta-row"><span>'+pin+(t.venue==="未定"?"会場：未定":esc(t.venue))+'</span><span>'+org+'主催：'+esc(t.org)+'</span></div>'+(t.note?'<span class="note-line">'+esc(t.note)+'</span>':'')+'</div><div class="status-col">'+tags+'</div></div>';
+    return '<div class="'+cls+'"><div class="date-badge '+mc+'"><span class="dt-full">'+date+'</span></div><div class="sched-body"><h3>'+esc(t.name)+'</h3><div class="meta-row"><span>'+pin+(t.venue==="未定"?"会場：未定":esc(t.venue))+'</span><span>'+org+'主催：'+esc(t.org)+'</span></div>'+(t.note?'<span class="note-line">'+esc(t.note)+'</span>':'')+(t.url?' <a class="lk-live" href="'+esc(t.url)+'" target="_blank" rel="noopener">'+esc(t.urlLabel||'詳細')+' ›</a>':'')+'</div><div class="status-col">'+tags+'</div></div>';
   }
   function section(title,list){return list.length?'<div class="sub-head"><h2>'+title+'</h2><span class="count">'+list.length+'件</span></div><div class="sched-list">'+list.map(card).join("")+'</div>':"";}
   function render(){
