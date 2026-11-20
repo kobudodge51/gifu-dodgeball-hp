@@ -651,6 +651,13 @@
   .spec div{align-items:baseline;line-height:1.5;padding:2px 8px;}
   .spec dt{font-weight:800;color:var(--violet-700);white-space:nowrap;flex:none;}
   .spec dd{margin:0;color:var(--ink);font-weight:700;}
+  .sched-card{position:relative;cursor:pointer;}
+  .card-link{color:inherit;text-decoration:none;}
+  .card-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;}
+  .sched-card:hover .card-link{color:var(--pink-700);}
+  .lk-live{position:relative;z-index:2;}
+  .sched-card::after{content:"詳細 ›";position:absolute;right:12px;bottom:6px;font-size:10px;font-weight:800;color:var(--pink-700);}
+  @media (max-width:920px){.sched-card::after{display:none;}}
 </style>
 </head>
 <body>
@@ -758,7 +765,7 @@
     else tags+='<span class="status-tag status-tbd">日程未定</span>';
     if(t.status!=="past"&&t.entry==="open") tags+='<span class="entry-tag entry-open"><span class="dot"></span>募集中</span>';
     if(t.status!=="past"&&t.entry==="closed") tags+='<span class="entry-tag entry-closed"><span class="dot"></span>締切済</span>';
-    return '<div class="'+cls+'"><div class="date-badge '+mc+'"><span class="dt-full">'+date+'</span></div><div class="sched-body"><h3>'+esc(t.name)+'</h3><div class="meta-row"><span>'+pin+(t.venue==="未定"?"会場：未定":esc(t.venue))+'</span><span>'+org+'主催：'+esc(t.org)+'</span></div>'+(t.note?'<span class="note-line">'+esc(t.note)+'</span>':'')+(function(){var r=[];
+    return '<div class="'+cls+'"><div class="date-badge '+mc+'"><span class="dt-full">'+date+'</span></div><div class="sched-body"><h3><a class="card-link" href="tournament.html?id='+encodeURIComponent(t.id)+'" target="_blank" rel="noopener">'+esc(t.name)+'</a></h3><div class="meta-row"><span>'+pin+(t.venue==="未定"?"会場：未定":esc(t.venue))+'</span>'+(t.org?'<span>'+org+'主催：'+esc(t.org)+'</span>':'')+'</div>'+(t.note?'<span class="note-line">'+esc(t.note)+'</span>':'')+(function(){var r=[];
       if(t.categories&&t.categories.length) r.push(['カテゴリー',t.categories.join(' / ')]);
       if(t.capacity) r.push([t.capLabel||'募集チーム数',t.capacity]);
       if(t.deadline) r.push(['申込締切',t.deadline]);
