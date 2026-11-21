@@ -41,6 +41,11 @@ window.JDBA_DETAILS = {
 
 /* 大会結果。新しい大会が先頭。teams の並びは 優勝・準優勝・第3位 の順 */
 window.JDBA_RESULTS = [
+  {name:"ぴょこたんカップ2026 クリスマスパーティ", date:"2026-11-21", venue:"OKBぎふ清流アリーナ", divisions:[
+    {name:"オフィシャルの部", teams:["SOUL MAX池田（岐阜県）","TOYOTA KATTZ（愛知県）",[3,"Soul West（愛知県）"],[3,"Genki Kids（愛知県）"]]},
+    {name:"ジュニアの部", teams:["J Soul（愛知県）","Catching☆Star Jr.（愛知県）","ガンバベアーズjr（岐阜県）","KATTZ Jr（愛知県）"]},
+    {name:"仮装コンテスト", teams:["TOYOTA KATTZ（愛知県）","ひだ闘球Monsters（岐阜県）","TRICK SQUARE（岐阜県）","Catching☆Star Jr.・Merveille☆Star（岐阜県）"]}
+  ]},
   {name:"ヒマラヤカップ2026", date:"2026-10-18", venue:"岐阜メモリアルセンター で愛・ふれ愛ドーム", divisions:[
     {name:"オフィシャル", teams:["本郷サンダーズ（愛知県）","鷺洲軍団（大阪府）","御影No.1（兵庫県）"]},
     {name:"ジュニア", teams:["SOULMAX池田Jr（岐阜県）","大林ファイターズJr（愛知県）"]},
